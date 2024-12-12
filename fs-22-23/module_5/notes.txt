@@ -1,0 +1,21 @@
+11-12-2024
+NodeJS ? => Environment
+ReactJS -> Library
+Chartjs, d3js etc
+
+SPA(Single Page Application) => Only 1 html file
+
+-------------------------------------------------------
+12-12-2024
+Prerequisites
+1. Babel
+2. NodeJS
+3. Live Server
+4. File loaders
+5. Bundler (Webpack)
+
+npm = node package manager
+
+Boiler plate => Pre configured project setup
+CRA (Create React App)
+Vite
