@@ -19,3 +19,17 @@ npm = node package manager
 Boiler plate => Pre configured project setup
 CRA (Create React App)
 Vite
+-----------------------------------------------
+13-12-2024
+CSS in React
+1. Inline CSS
+2. External CSS
+
+Props = Properties
+
+const sum = (num1, num2) => {
+    return num1 + num2
+};
+
+sum(10,5);
+sum(7,80);
