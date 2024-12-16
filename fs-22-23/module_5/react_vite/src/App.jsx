@@ -1,16 +1,15 @@
 import styles from "./App.module.css";
-import MyComponent from './components/MyComponent';
-
+import Counter from "./components/16-12-2024/Counter";
+import UseStateDemo from "./components/16-12-2024/UseStateDemo";
+// import { MyComp } from "./components/16-12-2024/UseStateDemo";
 
 const App = () => {
   const name = "ABCD";
   return (
     <div>
-      <h2>This is app component</h2>
-      <MyComponent />
-      <div className={styles.card}>
-        this is a sample card
-      </div>
+      {/* <Counter /> */}
+      <UseStateDemo />
+      {/* <MyComp /> */}
     </div>
   )
 }

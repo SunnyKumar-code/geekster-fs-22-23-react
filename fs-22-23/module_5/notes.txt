@@ -33,3 +33,13 @@ const sum = (num1, num2) => {
 
 sum(10,5);
 sum(7,80);
+-----------------------------------------------
+16-12-2024
+1. Listeners
+2. State
+
+
+Value is being updated properly - LOGIC IS PERFECT
+UI is not updating - Rendering ISSUE
+Update variable's value
+Re-Rendering the UI
