@@ -43,3 +43,21 @@ Value is being updated properly - LOGIC IS PERFECT
 UI is not updating - Rendering ISSUE
 Update variable's value
 Re-Rendering the UI
+-----------------------------------------------
+17-12-2024
+States : setState
+
+const names = ["a",{name: "", title: "", completed: false},"c","d","e"];
+Q. Replace letter b with letter z with the help of splice method
+const indexOfCharacterB = 1;
+names.splice(start-index, items-to-delete, item-to-insert)
+names.splice(1, 1, {
+    ...names[1],
+    completed: true
+})
+
+const arr = ["",""]
+arr = [] // not allowed
+
+Conditional Rendering : To show / hide something based on a condition
+Lifting up the state : When child changes the state of the parent
