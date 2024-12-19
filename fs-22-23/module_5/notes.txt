@@ -61,3 +61,9 @@ arr = [] // not allowed
 
 Conditional Rendering : To show / hide something based on a condition
 Lifting up the state : When child changes the state of the parent
+
+-----------------------------------------------
+19-12-2024
+Types of components in React
+1. Functional Components
+2. Class based Components
