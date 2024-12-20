@@ -67,3 +67,14 @@ Lifting up the state : When child changes the state of the parent
 Types of components in React
 1. Functional Components
 2. Class based Components
+
+-----------------------------------------------
+20-12-2024
+Hooks? => These are some functions in reactjs which handles the side effects.
+
+Side effects => The operations other than updating UI which deals with internals (vitual dom, lifecycle etc - react core) of reactjs
+
+useEffect(callback-fn,dependencies-array) => All 3 phases
+Mounting phase => useEffect(callback-fn, [])
+Updating phase => useEffect(callback-fn and return a fn from callback-fn, [])
+Unmounting phase

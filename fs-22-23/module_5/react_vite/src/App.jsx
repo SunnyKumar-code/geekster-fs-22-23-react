@@ -1,11 +1,9 @@
-import ArrayState from "./components/17-12-2024/ArrayState";
-import UserInfo from "./components/17-12-2024/UserInfo";
+import HooksDemo from "./components/20-12-2024/HooksDemo";
 
 const App = () => {
   return (
     <div>
-      {/* <UserInfo /> */}
-      <ArrayState />
+      <HooksDemo />
     </div>
   )
 }

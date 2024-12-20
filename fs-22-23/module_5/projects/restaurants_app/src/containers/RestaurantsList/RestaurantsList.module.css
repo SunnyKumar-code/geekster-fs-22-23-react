@@ -4,3 +4,9 @@
     gap: 20px;
     justify-content: center;
 }
+
+.filter-form {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
