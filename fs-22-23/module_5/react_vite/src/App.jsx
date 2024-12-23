@@ -1,9 +1,9 @@
-import HooksDemo from "./components/20-12-2024/HooksDemo";
+import Api from "./components/23-12-2024/Api";
 
 const App = () => {
   return (
     <div>
-      <HooksDemo />
+      <Api />
     </div>
   )
 }

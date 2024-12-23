@@ -76,5 +76,18 @@ Side effects => The operations other than updating UI which deals with internals
 
 useEffect(callback-fn,dependencies-array) => All 3 phases
 Mounting phase => useEffect(callback-fn, [])
-Updating phase => useEffect(callback-fn and return a fn from callback-fn, [])
-Unmounting phase
+Updating phase => useErffect()
+Unmounting phase => useEffect(callback-fn and retun a fn from callback-fn, [])
+
+-----------------------------------------------
+23-12-2024
+
+GET => To get the data from the Server
+POST => To send the data to the Server
+
+HTTP Status Codes
+1xx => Informational code
+2xx => Sucess Codes
+3xx => Redirectional Codes
+4xx => Error codes (Client error)
+5xx => Error codes (Server error)
