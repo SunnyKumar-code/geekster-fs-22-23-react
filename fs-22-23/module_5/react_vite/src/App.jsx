@@ -1,9 +1,9 @@
-import Api from "./components/23-12-2024/Api";
+import Apis24 from "./components/24-12-2024/Apis24";
 
 const App = () => {
   return (
     <div>
-      <Api />
+      <Apis24 />
     </div>
   )
 }

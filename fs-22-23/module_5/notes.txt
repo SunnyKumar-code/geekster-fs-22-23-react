@@ -91,3 +91,18 @@ HTTP Status Codes
 3xx => Redirectional Codes
 4xx => Error codes (Client error)
 5xx => Error codes (Server error)
+
+-----------------------------------------------
+24-12-2024
+POST APIs
+useRef()
+useMemo()
+
+Pre requisits to call an API
+
+End Point : URL
+Method : GET, POST etc
+Headers: key-value pairs (eg. API Keys)
+Body : Shape / Structure of the body
+
+Every API request and response has 2 parts : Header & Body
