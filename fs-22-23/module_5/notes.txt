@@ -106,3 +106,14 @@ Headers: key-value pairs (eg. API Keys)
 Body : Shape / Structure of the body
 
 Every API request and response has 2 parts : Header & Body
+
+-----------------------------------------------
+26-12-2024
+
+Hooks
+useRef
+memo
+useCallback
+useMemo
+
+return -> useEffect
