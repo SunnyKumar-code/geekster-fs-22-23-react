@@ -1,10 +1,9 @@
-import Apis24 from "./components/24-12-2024/Apis24";
-import Hooks from "./components/26-12-2024/Hooks";
+import Parent from "./components/27-12-2024/Parent";
 
 const App = () => {
   return (
     <div>
-      <Hooks />
+      <Parent />
     </div>
   )
 }

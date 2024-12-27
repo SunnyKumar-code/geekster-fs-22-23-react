@@ -117,3 +117,14 @@ useCallback
 useMemo
 
 return -> useEffect
+
+-----------------------------------------------
+27-12-2024
+
+memo => Memoization (Caching / Cache)
+
+memo => Compares oldProps and newProps to decide whether to render or not
+Allow re render => If the props passed to child changes
+Prvent re render => If the props passed to child does not changes OR we did not passed any props
+
+function re-creating => reference of the function is changing (probably be due to re rendering)
