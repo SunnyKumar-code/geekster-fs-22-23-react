@@ -128,3 +128,23 @@ Allow re render => If the props passed to child changes
 Prvent re render => If the props passed to child does not changes OR we did not passed any props
 
 function re-creating => reference of the function is changing (probably be due to re rendering)
+
+-----------------------------------------------
+30-12-2024
+
+Routing
+
+Types
+1. SSR Server Side Routing => When server loads your page for every route (Page refresh)
+2. CSR Client Side Routing => When Client client loads your page for every route (No page refresh)
+
+localhost:5713/contact-us
+
+Home =>  /
+AboutUs => /about-us
+ContactUs => /contact-us
+
+Conditon
+1. Dont' use <a> insted use <Link>
+2. Link is allowed only inside the <RouterProvider /> tree
+3. I don't want to repeat the nav bar
