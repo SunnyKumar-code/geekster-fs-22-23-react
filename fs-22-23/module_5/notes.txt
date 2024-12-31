@@ -148,3 +148,22 @@ Conditon
 1. Dont' use <a> insted use <Link>
 2. Link is allowed only inside the <RouterProvider /> tree
 3. I don't want to repeat the nav bar
+
+-----------------------------------------------
+31-12-2024
+
+react-router-dom
+1. Import methods and components
+2. Create a browser router
+3. Supply it to the RouterProvider
+
+
+https://www.makemytrip.com/hotel/hotel-details/?hotelId=<hotel-id>
+https://www.makemytrip.com/hotel/hotel-details/?hotelId=1
+https://www.makemytrip.com/hotel/hotel-details/?hotelId=2
+https://www.makemytrip.com/hotel/hotel-details/?hotelId=3
+
+https://www.makemytrip.com/hotel/hotel-details/<hotel-id>
+https://www.makemytrip.com/hotel/hotel-details/1
+https://www.makemytrip.com/hotel/hotel-details/2
+https://www.makemytrip.com/hotel/hotel-details/3

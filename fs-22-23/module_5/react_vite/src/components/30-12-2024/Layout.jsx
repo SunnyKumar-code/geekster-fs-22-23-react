@@ -5,16 +5,8 @@ import NavBar from "./NavBar";
 const Layout = () => {
     return (
         <>
-            <NavBar />
+            <NavBar /> {/* Header */}
             <Outlet />
-                {/* DYNAMIC CONTENT */}
-                {/* if(url == "/") {
-                    HOME
-                } else if (url == "/contact-us") {
-                    CONTACT US
-                } else if (url == "/about-us") {
-                    ABOUT US
-                } */}
             <Footer />
         </>
     );
