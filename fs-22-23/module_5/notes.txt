@@ -167,3 +167,57 @@ https://www.makemytrip.com/hotel/hotel-details/<hotel-id>
 https://www.makemytrip.com/hotel/hotel-details/1
 https://www.makemytrip.com/hotel/hotel-details/2
 https://www.makemytrip.com/hotel/hotel-details/3
+
+
+-----------------------------------------------
+02-01-2025
+
+useReducer()
+
+Payload => New value / data etc
+
+initData => state
+reducerFn => disptach
+
+Cart Assignment with useReducer()
+const initData = {
+    cart: [
+        {
+            pId: 1,
+            name: "Galaxy S8",
+            price: 399,
+            qty: 1
+        },
+        {
+            pId: 2,
+            name: "Google Pixel",
+            price: 259,
+            qty: 1
+        },
+        {
+            pId: 3,
+            name: "Redmi Note 2",
+            price: 99,
+            qty: 1
+        }
+    ]
+}
+
+const reducerFn = (state, action) => {
+    switch(action.type) {
+        case "INCREASE_QTY":
+            const cartCopy = [...state.cart];
+            cartCopy.splice(indexToUpdate,1, {
+                // Logic to update qty
+            });
+            return {
+                ...state,
+                cart: cartCopy
+            }
+        case "DECREASE_QTY":
+        case "REMOVE_ITEM":
+    }
+};
+
+
+const [state,dispcath] = useReducer(reducerFn, initData)

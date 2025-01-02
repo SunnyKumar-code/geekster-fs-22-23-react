@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 const hotels = [
@@ -20,6 +21,10 @@ const HotelDetails = () => {
     // HotelID?
     const params = useParams();
     const hotelDetails = hotels.find(hotel => hotel.hotelId == params.hotelId);
+    // console.log(params)
+    useEffect(() => {
+        // axios.get(`url`+params.hotelId)
+    },[])
 
     return (
         <>
