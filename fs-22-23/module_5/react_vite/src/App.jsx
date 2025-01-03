@@ -1,20 +1,15 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
-import AdvHook from "./components/02-01-2025/AdvHook";
+import Main from "./components/03-01-2025/Main";
+import UserContextProvider from "./context/UserContext";
 
 const App = () => {
-
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <AdvHook />
-    }
-  ]);
-
   return (
     <div>
-      {/* <NavBar /> */}
-      <RouterProvider router={router} />
+      <UserContextProvider>
+        <div>
+          <h1>App</h1>
+          <Main />
+        </div>
+      </UserContextProvider>
     </div>
   )
 }

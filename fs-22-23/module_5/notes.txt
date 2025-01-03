@@ -221,3 +221,10 @@ const reducerFn = (state, action) => {
 
 
 const [state,dispcath] = useReducer(reducerFn, initData)
+
+-----------------------------------------------
+03-01-2025
+
+Context API
+
+HOC (Higher Order Component)
