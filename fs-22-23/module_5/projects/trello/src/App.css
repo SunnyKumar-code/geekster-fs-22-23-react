@@ -1,0 +1,13 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+
+.list-container {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}

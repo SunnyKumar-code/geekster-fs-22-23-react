@@ -1,0 +1,10 @@
+.container {
+    border: 2px solid black;
+    width: 200px;
+    padding: 10px;
+    background-color: rgb(226, 232, 240);
+}
+
+.addBtn {
+
+}
