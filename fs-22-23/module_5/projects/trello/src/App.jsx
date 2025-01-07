@@ -1,4 +1,8 @@
 import { createContext, useReducer } from 'react';
+
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+
 import './App.css'
 import CardsList from './components/CardsList/CardsList'
 
@@ -21,7 +25,7 @@ function App() {
     switch (type) {
       case "ADD_ITEM":
         console.log(type, payload);
-        const { typeOfList } = payload;
+        const { typeOfList, taskTitle } = payload;
         let typeOfListToUpdate = [];
 
         if (typeOfList === "pending") {
@@ -33,7 +37,7 @@ function App() {
         }
 
         const copyOfList = [...typeOfListToUpdate];
-        copyOfList.push(payload.taskTitle);
+        copyOfList.push(taskTitle);
 
         // return {
         //   ...state,
@@ -49,11 +53,48 @@ function App() {
           [payload.typeOfList]: copyOfList
         };
       case "EDIT_ITEM":
-        return {};
+        /**
+         * 1. Make a copy of list to be updated
+         * 2. Splice the item using index
+         * 3. Update the copy in state
+         */
+        const copyOfListToBeUpdated = state[payload.typeOfList];
+        copyOfListToBeUpdated.splice(payload.index, 1, payload.newValue);
+
+        return {
+          ...state,
+          [payload.typeOfList]: copyOfListToBeUpdated
+        };
       case "DELETE_ITEM":
         return {};
       case "MOVE_ITEM": // Drag & Drop
-        return {};
+        /**
+         * 1. Make a copy of fromList
+         * 2. Make a copy of toList
+         * 3. Find the item to be moved using index
+         * 4. Add new item to be moved in the toList copy
+         * 5. Delete the item to be moved from the fromList copy
+         * 6. Update the fromList and toList in the state copy
+         */
+        const fromListCopy = [...state[payload.fromList]];
+        const toListCopy = [...state[payload.toList]];
+
+        const itemToBeMoved = fromListCopy[payload.index];
+
+        toListCopy.push(itemToBeMoved);
+        fromListCopy.splice(payload.index, 1);
+
+        return {
+          ...state,
+          [payload.fromList]: fromListCopy,
+          [payload.toList]: toListCopy
+        };
+
+      // return {
+      //   ...state,
+      //   [payload.fromList]: [...state[payload.fromList]].splice(payload.index, 1),
+      //   [payload.toList]: [...state[payload.toList], state[payload.fromList][payload.index]]
+      // };
       default:
         return state;
     }
@@ -63,11 +104,13 @@ function App() {
 
   return (
     <TasksContext.Provider value={{ state, dispatch }}>
-      <div className='list-container'>
-        <CardsList typeOfList={"pending"} heading={"Pending"} />
-        <CardsList typeOfList={"inProgress"} heading={"In Progress"} />
-        <CardsList typeOfList={"completed"} heading={"Completed"} />
-      </div>
+      <DndProvider backend={HTML5Backend}>
+        <div className='list-container'>
+          <CardsList typeOfList={"pending"} heading={"Pending"} />
+          <CardsList typeOfList={"inProgress"} heading={"In Progress"} />
+          <CardsList typeOfList={"completed"} heading={"Completed"} />
+        </div>
+      </DndProvider>
     </TasksContext.Provider>
   )
 }
@@ -76,64 +119,17 @@ export default App
 
 /**
  * 
- * 
- * Q. Write a function in JS which takes key name as input and prints the value from the object
-
-const user = {
-    name: "Dwayne",
-    age: 52,
-    address: "123 ABC St",
-    mobile: "1231231231"
-}
-
-
-getValue("age") => 52
-getValue("name") => Dwayne
-getValue("address") => 123 ABC St
-
-
-Q. Write a function in js which takes key and value as argument and add the key-value pair to the object
-
-setKV("bloodGroup", "AB+")
-const user = {
-    name: "Dwayne",
-    age: 52,
-    address: "123 ABC St",
-    mobile: "1231231231",
-    bloodGroup: "AB+"
-}
-
-setKV("email", "dwayne@email.com")
-const user = {
-    name: "Dwayne",
-    age: 52,
-    address: "123 ABC St",
-    mobile: "1231231231",
-    bloodGroup: "AB+",
-    email: "dwayne@email.com"
-}
-
-
-Q. Write a function in js which takes key name and the new value to update in an object
-
-updateValue("age", 20)
-
-const user = {
-    name: "Dwayne",
-    age: 20,
-    address: "123 ABC St",
-    mobile: "1231231231"
-}
-
-
-Q. Write a function in js which takes key name and deletes the key from the object
-
-deleteValue("address")
-const user = {
-    name: "Dwayne",
-    age: 52,
-    mobile: "1231231231"
-}
-
-
+ *   const initData = {
+    lists: [
+      {
+        name: "pending",
+        tasks: []
+      },
+      {
+        name: "inProgress",
+        tasks: []
+      }
+    ],
+  };
+ *
  */

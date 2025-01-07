@@ -1,5 +1,7 @@
 import { useRef, useState, useContext } from "react";
 
+import { useDrop } from "react-dnd";
+
 import { TasksContext } from "../../App";
 import Card from "../Card/Card";
 import styles from "./CardsList.module.css";
@@ -8,6 +10,22 @@ const CardsList = ({ typeOfList, heading }) => {
 
     const textBoxRef = useRef();
     const ctx = useContext(TasksContext);
+    const [properties, ref] = useDrop(() => ({
+        accept: "CARD",
+        drop: (item) => {
+            // Logic to be executed after the item is dropped
+            if (item.typeOfList !== typeOfList) {
+                ctx.dispatch({
+                    type: "MOVE_ITEM",
+                    payload: {
+                        fromList: item.typeOfList,
+                        toList: typeOfList,
+                        index: item.index
+                    }
+                })
+            }
+        }
+    }));
     console.log(ctx);
 
     const [addCardFormVisible, setAddCardFormVisible] = useState(false);
@@ -30,6 +48,8 @@ const CardsList = ({ typeOfList, heading }) => {
                 taskTitle: taskTitle
             }
         });
+        textBoxRef.current.value = "";
+        setAddCardFormVisible(false);
         // Add the data to the list
     };
 
@@ -47,8 +67,11 @@ const CardsList = ({ typeOfList, heading }) => {
     };
 
     return (
-        <div className={styles.container}>
+        <div ref={ref} className={styles.container}>
             <h2>{heading}</h2>
+            {
+                ctx.state[typeOfList].map((taskTitle, index) => <Card key={`${taskTitle}_${index}`} typeOfList={typeOfList} index={index} title={taskTitle} />)
+            }
             {renderCreateCard()}
 
         </div>
