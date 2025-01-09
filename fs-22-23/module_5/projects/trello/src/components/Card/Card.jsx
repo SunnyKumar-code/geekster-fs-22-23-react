@@ -14,10 +14,15 @@ const Card = ({ index, title, typeOfList }) => {
     const [properties, ref] = useDrag(() => ({
         type: "CARD",
         item: { taskTitle: title, index: index, typeOfList: typeOfList }, // data assosiated with the draggable item to bind with ui
-        collect: (monitor) => ({ // Optional detail you need at the time of dragging
-            opacity: 1
-        })
+        collect: (monitor) => {
+            console.log(monitor)
+            return { // Optional detail you need at the time of dragging
+                opacity: monitor.isDragging() ? 0.5 : 1,
+                isDragging: monitor.isDragging()
+            }
+        }
     }));
+    console.log(properties)
 
     useEffect(() => {
         if (isEditMode) {
@@ -50,10 +55,10 @@ const Card = ({ index, title, typeOfList }) => {
                     <button onClick={onSave}>Save</button>
                     <button onClick={() => setEditMode(false)}>Cancel</button>
                 </div> :
-                    <>
+                    <div style={{ backgroundColor: properties.isDragging ? "red": "green" }}>
                         <span>{title}</span>
                         <button onClick={onEditItem}>Edit</button>
-                    </>
+                    </div>
             }
         </div>
     );

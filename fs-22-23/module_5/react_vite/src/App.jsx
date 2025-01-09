@@ -1,15 +1,9 @@
-import Main from "./components/03-01-2025/Main";
-import UserContextProvider from "./context/UserContext";
+import Login from "./components/09-01-2025/Login";
 
 const App = () => {
   return (
     <div>
-      <UserContextProvider>
-        <div>
-          <h1>App</h1>
-          <Main />
-        </div>
-      </UserContextProvider>
+      <Login />
     </div>
   )
 }
