@@ -1,0 +1,19 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+div>ul {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    list-style: none;
+}
