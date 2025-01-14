@@ -1,0 +1,12 @@
+.container {
+    border: 2px solid black;
+}
+
+.section {
+    display: flex;
+}
+
+.container aside {
+    max-width: 300px;
+    border: 2px solid grey;
+}
