@@ -4,23 +4,28 @@ import UserPicture from "../../assets/user.jpg";
 import styles from "./ContactCard.module.css";
 
 
-const ContactCard = () => {
+const ContactCard = (props) => {
+
+    const onEditContact = () => {
+        props.onEditContact(props.id)
+    };
+
     return (
         <tr>
             <td>
                 <img className={styles.userPicture} src={UserPicture} alt="User Picture" />
             </td>
             <td>
-                Lime
+                {props.name}
             </td>
             <td>
-                Elision
+                {props.surname}
             </td>
             <td>
-                9876543210
+                {props.mobileNo}
             </td>
             <td>
-                <FaPencilAlt />
+                <FaPencilAlt onClick={onEditContact} />
                 <FaTrashAlt />
                 <FaHeart />
             </td>

@@ -26,7 +26,8 @@ contactsList : copy
  */
 
 const initState = {
-    contactsList: []
+    contactsList: [],
+    editContactId: ""
 }
 
 const contactSlice = createSlice({
@@ -37,15 +38,25 @@ const contactSlice = createSlice({
             state.contactsList.push(action.payload);
         },
         editContact(state, action) {
+            // Edit the contact
+            // console.log(action.payload)
+            const index = state.contactsList.findIndex(contact => contact.id == state.editContactId)
+            console.log(index);
 
+            state.contactsList.splice(index, 1, action.payload)
+            state.editContactId = "";
         },
         deleteContact(state, action) {
 
         },
         markContactAsFavourite(state, action) {
 
-        }
+        },
+        setEditContactId(state, action) {
+            state.editContactId = action.payload;
+        },
     }
 });
 
+export const { addContact, editContact, deleteContact, markContactAsFavourite, setEditContactId } = contactSlice.actions;
 export default contactSlice.reducer;
