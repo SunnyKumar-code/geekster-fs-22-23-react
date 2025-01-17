@@ -8,12 +8,19 @@ const ContactsTable = () => {
 
     const dispatch = useDispatch();
     const contactsList = useSelector((state) => state.contacts.contactsList);
-    console.log(contactsList);
+    const searchKey = useSelector(state => state.contacts.searchKey);
+    // console.log(searchKey);
 
     const onEditContact = (id) => {
         console.log(id)
         dispatch(setEditContactId(id));
-     };
+    };
+
+    const filterResults = (contact) => {
+        return contact.name.toLowerCase().includes(searchKey.toLowerCase())
+    }
+
+    const filteredContacts = searchKey ? contactsList.filter(filterResults) : contactsList;
 
     return (
         <table className={styles.contactsTable}>
@@ -28,7 +35,8 @@ const ContactsTable = () => {
             </thead>
             <tbody>
                 {
-                    contactsList.map(contact => <ContactCard onEditContact={onEditContact} key={contact.id} {...contact} />)
+                    filteredContacts
+                        .map(contact => <ContactCard onEditContact={onEditContact} key={contact.id} {...contact} />)
                 }
             </tbody>
         </table>

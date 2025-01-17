@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from 'uuid';
 
@@ -19,7 +19,7 @@ const Sidebar = () => {
     useEffect(() => {
         if (editContactId) {
             const contactToEdit = contactsList.find(contact => contact.id === editContactId);// Finding the contact to be edited with the help of unique id
-            console.log(contactToEdit)
+            // console.log(contactToEdit)
             nameRef.current.value = contactToEdit.name;
             surnameRef.current.value = contactToEdit.surname;
             mobileNoRef.current.value = contactToEdit.mobileNo;

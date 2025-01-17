@@ -26,8 +26,45 @@ contactsList : copy
  */
 
 const initState = {
-    contactsList: [],
-    editContactId: ""
+    contactsList: [
+        {
+            "name": "Divyansh",
+            "surname": "Moonat",
+            "mobileNo": "9876543210",
+            "id": "a7773576-d4cb-4f84-bd0c-52b18a35e57c",
+            "isFav": false
+        },
+        {
+            "name": "Alex",
+            "surname": "D",
+            "mobileNo": "123123",
+            "id": "a7773576-d4cb-4f84-bd0c-52b18a35e57d",
+            "isFav": false
+        },
+        {
+            "name": "Peter",
+            "surname": "DP",
+            "mobileNo": "123123",
+            "id": "a7773576-d4cb-4f84-bd0c-52b18a35e573",
+            "isFav": false
+        },
+        {
+            "name": "Petrik",
+            "surname": "XYZ",
+            "mobileNo": "456465",
+            "id": "a7773576-d4cb-4f84-bd0c-52b18a25e57c",
+            "isFav": false
+        },
+        {
+            "name": "Tony",
+            "surname": "S",
+            "mobileNo": "458788",
+            "id": "a7773576-d4cb-4f84-bd0c-52b18a35e17c",
+            "isFav": false
+        },
+    ],
+    editContactId: "",
+    searchKey: ""
 }
 
 const contactSlice = createSlice({
@@ -55,8 +92,11 @@ const contactSlice = createSlice({
         setEditContactId(state, action) {
             state.editContactId = action.payload;
         },
+        setSearchKey(state, action) {
+            state.searchKey = action.payload;
+        }
     }
 });
 
-export const { addContact, editContact, deleteContact, markContactAsFavourite, setEditContactId } = contactSlice.actions;
+export const { addContact, editContact, deleteContact, markContactAsFavourite, setEditContactId, setSearchKey } = contactSlice.actions;
 export default contactSlice.reducer;
