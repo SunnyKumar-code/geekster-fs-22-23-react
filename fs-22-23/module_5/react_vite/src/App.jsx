@@ -5,6 +5,9 @@ import { createBrowserRouter, Link, RouterProvider } from "react-router-dom"
 // import ContactUs from "./components/17-01-2025/ContactUs";
 import Layout from "./components/17-01-2025/Layout";
 import Loader from "./components/17-01-2025/Loader";
+import User from "./components/18-01-2025/User";
+import { Provider } from "react-redux";
+import store from "./store";
 
 const Home = React.lazy(() => import("./components/17-01-2025/Home"));
 const AboutUs = React.lazy(() => import("./components/17-01-2025/AboutUs"));
@@ -18,7 +21,7 @@ const App = () => {
       children: [
         {
           path: "/",
-          element: <Home />
+          element: <User />
         },
         {
           path: "/about-us",
@@ -34,9 +37,11 @@ const App = () => {
 
   return (
     <div>
-      <React.Suspense fallback={<Loader />} >
-        <RouterProvider router={router} />
-      </React.Suspense>
+      <Provider store={store}>
+        <React.Suspense fallback={<Loader />} >
+          <RouterProvider router={router} />
+        </React.Suspense>
+      </Provider>
     </div>
   )
 }
