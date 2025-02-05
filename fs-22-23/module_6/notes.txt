@@ -1,0 +1,8 @@
+05-02-2025
+
+Steps to initialize a new project using nodejs
+1. npm init
+2. Answer few basic questions
+3. Package.json will be created
+4. add start script in package.json
+5. run start script to start the project
