@@ -6,3 +6,7 @@ Steps to initialize a new project using nodejs
 3. Package.json will be created
 4. add start script in package.json
 5. run start script to start the project
+---------------------------------------------------------
+13-02-2025
+
+Server & API Developement Intro
