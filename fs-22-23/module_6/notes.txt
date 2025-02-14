@@ -10,3 +10,9 @@ Steps to initialize a new project using nodejs
 13-02-2025
 
 Server & API Developement Intro
+
+14-02-2025
+
+?id=1 => req.query
+
+/users/:id i.e /users/1 => req.params
