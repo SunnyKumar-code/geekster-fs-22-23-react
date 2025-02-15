@@ -11,8 +11,23 @@ Steps to initialize a new project using nodejs
 
 Server & API Developement Intro
 
+---------------------------------------------------------
 14-02-2025
 
 ?id=1 => req.query
 
 /users/:id i.e /users/1 => req.params
+
+---------------------------------------------------------
+15-02-2025
+Middlewares
+
+Types of Middlewares
+1. App level middleware => Completed
+2. Route level middleware
+3. Error handling middleware => Completed
+4. Third party middleware
+5. Built in middlewares
+
+Custom Middlewares => We write on our own
+Pre defined Middlewares => Already written
