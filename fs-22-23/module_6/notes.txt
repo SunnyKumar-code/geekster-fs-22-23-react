@@ -24,10 +24,16 @@ Middlewares
 
 Types of Middlewares
 1. App level middleware => Completed
-2. Route level middleware
+2. Route level middleware => Completed
 3. Error handling middleware => Completed
-4. Third party middleware
-5. Built in middlewares
+4. Third party middleware => Homework
+5. Built in middlewares => Completed
 
 Custom Middlewares => We write on our own
 Pre defined Middlewares => Already written
+
+---------------------------------------------------------
+17-02-2025
+
+Middlewares contd..
+URL Shortner
