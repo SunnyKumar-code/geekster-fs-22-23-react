@@ -37,3 +37,175 @@ Pre defined Middlewares => Already written
 
 Middlewares contd..
 URL Shortner
+
+---------------------------------------------------------
+20-02-2025
+
+DB Cluster
+    DB Server (1. url/host 2. port no(27017)) mongodb://localhost:27017 => Connection String
+        DB
+            Collection
+                Documents
+                    K-V Pairs
+
+MQL (Mongo Query Language)
+
+CRUD
+Create => 
+insertOne()
+insertMany()
+
+Read => 
+Syntax : 
+db.<collection-name>.find()
+db.<collection-name>.findOne()
+
+db.products.find() => 0-10, 10-20 ...
+
+Comparision Operator
+
+== -> $eq
+>  -> $gt
+>= -> $gte
+<  -> $lt
+<= -> $lte
+!= -> $ne
+
+Q. Write a query to find all the products whose price is 14.99
+db.products.find({
+    price : {
+        $eq: 14.99
+    }
+})
+
+Q. Write a query to find all the products whose price is 9.99
+db.products.find({
+    price : {
+        $eq: 9.99
+    }
+})
+
+db.products.find({
+    price : 9.99
+})
+
+Q. Write a query to find all the products whose rating is 9.49
+db.products.find({
+    rating: {
+        $eq: 9.49
+    }
+})
+
+Q. Write a query to find a product whose price is 49.99
+db.products.findOne({
+    price: {
+        $eq: 49.99
+    }
+})
+
+Q. Write a query to find the product whose price is less than 35
+db.products.find({
+    price: {
+        $lt: 35
+    }
+})
+.count() // Count the no of query results
+
+
+Q. Write a query to find the product whose price is greater than or eqal to  15000
+db.products.find({
+    price: {
+        $gte: 15000
+    }
+})
+
+Q. Write a query to find all the products whole rating is not 5.5
+
+db.products.find({
+    rating: {
+        $ne: 2.51
+    }
+})
+
+
+Logical Operator
+
+&& => $and
+|| => $or
+! => $not
+
+Q. Write a query to find all the product where rating is at least 4 and price is at most 100
+db.products.find({
+    $and: [
+        {
+            rating: {
+                $gt: 4
+            }
+        },
+        {
+            price: {
+                $lt: 100
+            }
+        }
+    ]
+})
+
+
+Q. Write a query to find a product which has either the rating 3 or price 500 or more
+
+db.products.findOne({
+    $or: [
+        {
+            rating: {
+                $eq: 3
+            }
+        },
+        {
+            price: {
+                $gte: 500
+            }
+        }
+    ]
+})
+
+db.products.findOne({
+    $or: [
+        {
+            rating: 3
+        },
+        {
+            price: {
+                $gte: 500
+            }
+        }
+    ]
+})
+
+Q. Find me all the mobiles under 15000
+db.products.find({
+    $and: [
+        {
+            category: {
+                $eq: "mobile"
+            }
+        },
+        {
+            price: {
+                $lt: 15000
+            }
+        }
+    ]
+})
+
+db.products.find({    
+    category: "laptops",
+    price: {
+        $lt: 15000
+    }
+})
+
+
+Q. Find all products having phone in their title
+db.products.find({
+    title: /phone/
+})
