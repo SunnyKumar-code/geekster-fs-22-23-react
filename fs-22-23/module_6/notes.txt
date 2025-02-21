@@ -209,3 +209,15 @@ Q. Find all products having phone in their title
 db.products.find({
     title: /phone/
 })
+
+---------------------------------------------------------
+21-02-2025
+
+Project structuring (MVC)
+MongoDB + Node JS connection
+
+Naukri.com =>
+Job related operation => CURD (Job Module)
+Applicant module
+HR Module
+Settings Module
