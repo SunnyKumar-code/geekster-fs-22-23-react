@@ -9,7 +9,7 @@ const app = express();
 app.use(express.json());
 
 // DB Connection
-const DB_URI = "mongodb://127.0.0.1:27017/job_app";
+const DB_URI = "mongodb+srv://djain7429:6XS4NtPPkLfW8JWF@cluster0.cqu0r.mongodb.net/";
 mongoose
     .connect(DB_URI)
     .then(() => console.log("DB Connected successfully"))
