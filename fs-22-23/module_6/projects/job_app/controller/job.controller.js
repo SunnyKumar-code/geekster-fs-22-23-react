@@ -25,25 +25,76 @@ const jobCreate = async (req, res, next) => {
  * @param {*} req 
  * @param {*} res 
  */
-const jobList = (req, res) => {
-    res.json({
-        success: true,
-        message: "List Job API"
-    });
+const jobList = async (req, res, next) => {
+    try {
+        // Read operation    
+        const minExperienceRequired = parseInt(req.query.minExperienceRequired || 0);
+
+        // const jobsList = await JobModel.find({
+        //     minExperienceRequired: {
+        //         $gte: minExperienceRequired
+        //     }
+        // });
+
+        const jobsList = await JobModel.findById("67b8a857d1fb349788cf7289");
+
+
+        res.json({
+            success: true,
+            message: "List Job API",
+            data: jobsList
+        });
+    } catch (err) {
+        next(err);
+    }
 };
 
-const jobEdit = (req, res) => {
-    res.json({
-        success: true,
-        message: "Edit Job API"
-    });
+const jobEdit = async (req, res, next) => {
+    try {
+        console.log(req.query.id);
+        console.log(req.body);
+        // findByIdAndUpdate(ID TO FIND, FIELDS TO REPLACE)
+        // await JobModel.findByIdAndUpdate(req.query.id, req.body);
+        //JobModel.updateOne(SEARCH FILTERS, FIELDS TO REPLACE)
+        const findObj = {
+            salary: {
+                $gte: 1000
+            }
+        };
+        const updateObj = {
+            title: "NEWLY UPDATED JOB TITLE"
+        };
+        // await JobModel.updateOne(findObj, updateObj);
+
+        await JobModel.updateMany(findObj, updateObj);
+        res.json({
+            success: true,
+            message: "Job edited successfully"
+        });
+    } catch (err) {
+        next(err);
+    }
 };
 
-const jobDelete = (req, res) => {
-    res.json({
-        success: true,
-        message: "Delete Job API"
-    });
+const jobDelete = async (req, res) => {
+    try {
+        // indByIdAndDelete(ID TO DELETE)
+        // await JobModel.findByIdAndDelete("67bc853e5a4e81910b735ccf")
+
+        const findObj = {
+            salary: {
+                $gte: 1000
+            }
+        };
+
+        await JobModel.deleteMany(findObj);
+        res.json({
+            success: true,
+            message: "Delete Job API"
+        });
+    } catch (err) {
+        next(err);
+    }
 };
 
 const jobController = {

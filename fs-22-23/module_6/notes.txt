@@ -221,3 +221,15 @@ Job related operation => CURD (Job Module)
 Applicant module
 HR Module
 Settings Module
+
+---------------------------------------------------------
+24-02-2025
+
+
+edit => 
+1. _id of the job to edit
+2. fields and their values to edit
+
+find variants in mongoose model => find, findOne, findById
+edit variants in mongoose model => updateMany, udpateOne, findByIdAndUpdate
+delete variants in mongoose model=> deleteMany, deleteOne, findByIdAndDelete
