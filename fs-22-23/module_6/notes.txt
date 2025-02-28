@@ -233,3 +233,8 @@ edit =>
 find variants in mongoose model => find, findOne, findById
 edit variants in mongoose model => updateMany, udpateOne, findByIdAndUpdate
 delete variants in mongoose model=> deleteMany, deleteOne, findByIdAndDelete
+
+---------------------------------------------------------
+28-02-2025
+Sending Email = SMTP (Simple Mail Transfer Protocol)
+File Sharing app (File upload)
