@@ -1,7 +1,9 @@
-const path = require("node:path");
-
 const express = require("express");
-const multer = require("multer");
+
+const mongoose = require("mongoose");
+
+
+const fileRoute = require("./routes/file.route");
 
 /**
  * 1st Phase : File upload feature
@@ -10,7 +12,7 @@ const multer = require("multer");
 
 const app = express();
 
-// app.use(express.json());
+app.use(express.json());
 
 /**
  * Middleware
@@ -27,26 +29,13 @@ const app = express();
  * 3. Filename after upload (WA20250227213700.jpg)
  */
 
-const filePath =  path.join(__dirname,"uploaded_files");
+// DB Connection
+mongoose
+    .connect("mongodb://127.0.0.1:27017/file_sharing_app")
+    .then(() => console.log("DB Connected successfully"))
+    .catch(err => console.log("ERROR CONNECTING TO DB", err));
 
-const storage = multer.diskStorage({
-    destination : filePath, // Path to save the file in SSD/HDD - disk storage
-});
-
-const upload = multer({ // Middleware initialization
-    storage: storage
-})
-
-
-app.post("/file-upload", (req, res) => {
-    const singleFileUploader = upload.single("profilePicture");
-    singleFileUploader(req, res, () => {
-        console.log(req.body);
-        res.json({
-            success: true,
-            message: "File upload API"
-        })
-    });
-});
+// Moudlar routes
+app.use(fileRoute);
 
 app.listen(5000, () => console.log("Server is up and running at port 5000"));
