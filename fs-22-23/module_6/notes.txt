@@ -246,3 +246,89 @@ File upload
 Share File
 Download File
 Delete File
+
+---------------------------------------------------------
+02-03-2025
+
+Shallow Copy vs Deep Copy
+const obj = {
+    a: 1,
+    b: 2,
+    c: "alsdfasd",
+    d: false,
+    e: {
+        x: 123,
+        y: "ABC"
+    }
+}
+
+const obj2 = obj;
+obj2.a = 5;
+
+const obj2 = { ...obj }; // new ay of shallow copy
+Object.assign(obj2, obj); // old way of shallow copy
+
+const obj3 = JSON.parse(JSON.stringify(obj)); //deep copy
+lodash (_) => _.deepClone() // deep copy
+
+
+
+-------------------------------------------------------------------------------------
+
+console.log([] + {}); // implicit type coersion    Explicit
+
++ => numbers - mathematical addition
++ -> strings - string concatenation
+
+"" + '[object Object]' => '[object Object]'
+
+-------------------------------------------------------------------------------------
+
+process.nextTick()
+
+Micro task queue => higher priority (promises)
+Macro task queue => lower priority (setTimeout, setIntervals etc)
+
+
+console.log("A") => 1
+
+Promise.resolve((res) => res(console.log("Resolved"))) => P1
+
+process.nextTick(() => console.log("B")) => Event loop's next iteration => P0
+
+console.log("C") => 2
+
+A
+C
+Next tick
+Promise
+
+-----------------------------------------------------------------------------------------
+Polyfill => Older implementation of newer methods
+reduce() => for, while, if, else
+
+
+=========================================================================================
+Agenda for Next Week 
+
+FS Project (Backend + Frontend)
+eCommerce
+1. User module (Signup, Login, Forgot password etc)
+2. Product module (Create Product, Listing API - Paginated & Search Oriented, Detail API)
+3. Cart module (Add item, remove item etc)
+4. Checkout module (Place order, payment gateway integration)
+5. Order module (Order confirmation, order history etc)
+6. Coupon/promo code moudle (Create coupon, apply coupon etc )
+
+Learnings
+1. Authentication & Authorization
+2. Paginated APIs
+3. Payment Gateway Integration
+4. Editing non primitive data types in mongodb
+5. Environment variables (Hiding the security related data)
+6. Docker introduction
+
+Hashing
+Encryption / Decryption
+Encoding / Decoding
+JWT
