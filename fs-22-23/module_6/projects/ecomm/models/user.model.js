@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 
 const userSchemaObject = {
     "email": {
@@ -33,10 +34,26 @@ const userSchemaObject = {
         type: String,
         required: true,
         enum: ["MALE", "FEMALE", "OTHERS"] // List of allowed values
+    },
+    token: {
+        type: String,
+        reqiured: false,
+        default: ""
     }
 };
 
 const userSchema = new mongoose.Schema(userSchemaObject);
+
+// Hooks
+userSchema.pre("save", async function () {
+    try {
+        const salt = await bcrypt.genSalt(10); // Extra added security on top of your password hash
+        const cipherTextPassword = await bcrypt.hash(this.password, salt);
+        this.password = cipherTextPassword;
+    } catch (err) {
+        console.log("ERROR WHILE HASINHG PASSWORD", err)
+    }
+});
 
 const UserModel = mongoose.model("users", userSchema);
 

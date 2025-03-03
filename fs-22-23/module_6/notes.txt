@@ -332,3 +332,29 @@ Hashing
 Encryption / Decryption
 Encoding / Decoding
 JWT
+
+=========================================================================================
+Passwords
+
+Plain Text => In simple words
+Cipher Text => Readable but you can't understand what it means
+
+abcd1234 => asdf90a8sdf90asdf0a0ad
+zyx456 => a9sf7d8a9s8fduasoifduasdf9as
+
+NON-SECURITTY RELATED TERMS
+
+Encoding => System can understand the data
+Decoding => Human can understand the data
+
+
+Whatsapp Chat
+Encryption => Plain to Cipher text
+Decryption => Cipher to plain text
+
+
+Password 
+Hashing => Plain to cipher text
+$2b$10$ZkESKuJMgy8xqmaEaZrb0OicITq/1NYJfUVccN8Yv.3mjroEc47wm
+$2b$10$45ffj6lNakECFA6O8/ZoUeT5KDU6KaxelhYqYL3fKYZwncMRP1kD.
+$2b$10$8Im7SnJ6XSJ453226ZK3Q.ap4xKvWK1Hd6UUzD8e/SkG/2dJieXci

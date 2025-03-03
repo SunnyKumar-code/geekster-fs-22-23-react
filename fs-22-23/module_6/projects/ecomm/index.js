@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 
 const userRoutes = require("./routes/user.route");
+const productRoutes = require("./routes/product.route");
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(express.json());
 
 // Modular routes
 app.use("/api/v1/user", userRoutes);
+app.use("/api/v1/product", productRoutes);
 
 mongoose
     .connect(DB_URI)
