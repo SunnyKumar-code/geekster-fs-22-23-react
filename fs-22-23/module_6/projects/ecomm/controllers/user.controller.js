@@ -11,6 +11,9 @@ const register = async (req, res, next) => {
         // const salt = await bcrypt.genSalt(10); // Extra added security on top of your password hash
         // const cipherTextPassword = await bcrypt.hash(plainTextPassword, salt);
         await UserModel.create(req.body);
+
+        // const userRecord = new UserModel(req.body);
+        // await userRecord.save();
         res.json({
             success: true,
             message: "User registered successfully"
