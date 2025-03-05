@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 
 const userRoutes = require("./routes/user.route");
 const productRoutes = require("./routes/product.route");
+const cartRoutes = require("./routes/cart.route");
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(express.json());
 // Modular routes
 app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/product", productRoutes);
+app.use("/api/v1/cart", cartRoutes);
 
 mongoose
     .connect(DB_URI)
