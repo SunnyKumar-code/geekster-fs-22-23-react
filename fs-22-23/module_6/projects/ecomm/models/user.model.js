@@ -42,7 +42,9 @@ const userSchemaObject = {
     }
 };
 
-const userSchema = new mongoose.Schema(userSchemaObject);
+const userSchema = new mongoose.Schema(userSchemaObject, {
+    timestamps: true
+});
 
 // Hooks
 userSchema.pre("save", async function () {

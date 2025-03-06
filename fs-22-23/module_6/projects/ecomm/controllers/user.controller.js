@@ -1,9 +1,12 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 const UserModel = require("../models/user.model");
 
-const JWT_SECRET_KEY = "MY_SECRET_KEY_12345";
+const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
 
 const register = async (req, res, next) => {
     try {

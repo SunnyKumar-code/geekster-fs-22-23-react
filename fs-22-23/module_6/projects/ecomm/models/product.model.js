@@ -70,6 +70,7 @@ const productSchema = new Schema({
         type: String
     },
     reviews: [{
+        // _id: false,
         rating: {
             type: Number,
             required: true
@@ -80,7 +81,8 @@ const productSchema = new Schema({
         },
         date: {
             type: Date,
-            required: true
+            required: true,
+            default: new Date()
         },
         reviewerName: {
             type: String,
@@ -120,9 +122,11 @@ const productSchema = new Schema({
     thumbnail: {
         type: String
     }
+}, {
+    timestamps: true
 });
 
 // Create the model from the schema
-const Product = mongoose.model('product', productSchema);
+const Product = mongoose.model('products', productSchema);
 
 module.exports = Product;

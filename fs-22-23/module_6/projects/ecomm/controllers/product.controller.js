@@ -1,4 +1,5 @@
 const ProductModel = require("../models/product.model");
+const UserModel = require("../models/user.model");
 
 const productCreate = async (req, res, next) => {
     await ProductModel.create(req.body);
@@ -74,10 +75,40 @@ const productDetail = async (req, res, next) => {
     })
 };
 
+const productReview = async (req, res) => {
+
+    const userDetailsFromDb = await UserModel.findById(req.body.userId);
+
+    // const items = [{},{},{},{},{}]
+    // $push: {
+    //     reviews: {
+    //         $each: items
+    //     }
+    // }
+    
+    await ProductModel.findByIdAndUpdate(req.body.productId,
+        {
+            $push: {
+                reviews: {
+                    rating: req.body.review.rating,
+                    comment: req.body.review.comment,
+                    reviewerName: `${userDetailsFromDb.firstName} ${userDetailsFromDb.lastName}`,
+                    reviewerEmail: userDetailsFromDb.email
+                }
+            }
+        });
+
+    res.json({
+        success: true,
+        message: "Review added successfully"
+    })
+};
+
 const productController = {
     productCreate,
     productList,
-    productDetail
+    productDetail,
+    productReview
 };
 
 module.exports = productController;

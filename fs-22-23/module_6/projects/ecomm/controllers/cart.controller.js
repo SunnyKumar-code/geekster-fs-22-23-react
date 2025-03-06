@@ -32,7 +32,7 @@ const cartAdd = async (req, res, next) => {
         await CartModel.create(objectToInsert);
     }
 
-    console.log(userCartFromDb);
+    // console.log(userCartFromDb);
 
     res.json({
         success: true,
@@ -45,7 +45,8 @@ const cartChangeQty = async (req, res) => {
     // Todo : Write your validation
     await CartModel.updateOne(
         {
-            "products.productId": req.body.product.productId
+            "products.productId": req.body.product.productId,
+            userId: req.body.userId
         },
         {
             $inc: {
@@ -65,7 +66,7 @@ const cartGet = async (req, res) => {
         .findOne({
             userId: req.body.userId
         })
-    .populate("products.productId");
+        .populate("products.productId");
 
     res.json({
         success: true,
