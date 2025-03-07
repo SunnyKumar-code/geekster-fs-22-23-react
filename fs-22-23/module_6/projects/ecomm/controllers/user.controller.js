@@ -47,14 +47,17 @@ const login = async (req, res) => {
 
         const currentTimeInSec = parseInt(Date.now() / 1000);
         const tokenData = {
-            iat: currentTimeInSec,
-            exp: currentTimeInSec + 3600,
+            // iat: currentTimeInSec,
             _id: user._id
         };
-        const token = jwt.sign(tokenData, JWT_SECRET_KEY);
+        const token = jwt.sign(tokenData, JWT_SECRET_KEY, {
+            expiresIn: 7200, // Expiry in seconds
+            notBefore: 0
+        });
 
         // DB update for this token / Store this token in DB
         await UserModel.findByIdAndUpdate(user._id, { token: token });
+        res.cookie("token", token);
         res.json({
             success: true,
             message: "Logged in successfully",

@@ -1,6 +1,8 @@
 const ProductModel = require("../models/product.model");
 const UserModel = require("../models/user.model");
 
+
+
 const productCreate = async (req, res, next) => {
     await ProductModel.create(req.body);
     res.json({
@@ -10,48 +12,54 @@ const productCreate = async (req, res, next) => {
 };
 
 const productList = async (req, res, next) => {
-    const itemsPerPage = req.query.pageSize || 10;
-    const pageNo = req.query.pageNo || 1;
-    const searchKey = req.query.searchKey || "";
+    try {
+        const itemsPerPage = req.query.pageSize || 10;
+        const pageNo = req.query.pageNo || 1;
+        const searchKey = req.query.searchKey || "";
 
-    const searchQuery = {
-        $or: [
-            {
-                title: new RegExp(searchKey, "gi")
-            },
-            {
-                description: new RegExp(searchKey, "gi")
-            },
-            {
-                tags: {
-                    $in: [searchKey]
+        const searchQuery = {
+            $or: [
+                {
+                    title: new RegExp(searchKey, "gi")
+                },
+                {
+                    description: new RegExp(searchKey, "gi")
+                },
+                {
+                    tags: {
+                        $in: [searchKey]
+                    }
                 }
-            }
-        ]
-    };
+            ]
+        };
 
-    const totalProducts = await ProductModel
-        .find(searchQuery)
-        .countDocuments()
+        const totalProducts = await ProductModel
+            .find(searchQuery)
+            .countDocuments()
 
-    const itemsToSkip = (pageNo - 1) * itemsPerPage
-    const products = await ProductModel
-        .find(
-            searchQuery,
-            {
-                title: 1,
-                price: 1,
-                thumbnail: 1
-            })
-        .skip(itemsToSkip)
-        .limit(itemsPerPage)
+        const itemsToSkip = (pageNo - 1) * itemsPerPage
+        const products = await ProductModel
+            .find(
+                searchQuery,
+                {
+                    title: 1,
+                    price: 1,
+                    thumbnail: 1
+                })
+            .skip(itemsToSkip)
+            .limit(itemsPerPage)
 
-    res.json({
-        success: true,
-        message: "Product list API",
-        total: totalProducts,
-        results: products,
-    })
+        res.json({
+            success: true,
+            message: "Product list API",
+            total: totalProducts,
+            results: products,
+        })
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ succes: false, message: "Something went wrong" })
+    }
+
 };
 
 const productDetail = async (req, res, next) => {
@@ -77,7 +85,7 @@ const productDetail = async (req, res, next) => {
 
 const productReview = async (req, res) => {
 
-    const userDetailsFromDb = await UserModel.findById(req.body.userId);
+    // const userDetailsFromDb = await UserModel.findById(req.body.userId);
 
     // const items = [{},{},{},{},{}]
     // $push: {
@@ -85,15 +93,15 @@ const productReview = async (req, res) => {
     //         $each: items
     //     }
     // }
-    
+
     await ProductModel.findByIdAndUpdate(req.body.productId,
         {
             $push: {
                 reviews: {
                     rating: req.body.review.rating,
                     comment: req.body.review.comment,
-                    reviewerName: `${userDetailsFromDb.firstName} ${userDetailsFromDb.lastName}`,
-                    reviewerEmail: userDetailsFromDb.email
+                    reviewerName: `${req.user.firstName} ${req.user.lastName}`,
+                    reviewerEmail: req.user.email
                 }
             }
         });

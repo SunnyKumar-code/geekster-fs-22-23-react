@@ -1,6 +1,7 @@
 const CartModel = require("../models/cart.model");
 
 const cartAdd = async (req, res, next) => {
+    console.log(req.user);
     /**
      * 1. Check if the cart for the user already exists
      *  1.1 If not create a new cart and add the product
@@ -8,7 +9,7 @@ const cartAdd = async (req, res, next) => {
      */
 
     const userCartFromDb = await CartModel.findOne({
-        userId: req.body.userId
+        userId: req.user._id
     });
 
     if (userCartFromDb) {
@@ -27,7 +28,7 @@ const cartAdd = async (req, res, next) => {
         // Create a new cart
         const objectToInsert = {
             products: [req.body.product],
-            userId: req.body.userId
+            userId: req.user._id
         }
         await CartModel.create(objectToInsert);
     }
@@ -46,7 +47,7 @@ const cartChangeQty = async (req, res) => {
     await CartModel.updateOne(
         {
             "products.productId": req.body.product.productId,
-            userId: req.body.userId
+            userId: req.user._id
         },
         {
             $inc: {
@@ -64,7 +65,7 @@ const cartChangeQty = async (req, res) => {
 const cartGet = async (req, res) => {
     const cart = await CartModel
         .findOne({
-            userId: req.body.userId
+            userId: req.user._id
         })
         .populate("products.productId");
 

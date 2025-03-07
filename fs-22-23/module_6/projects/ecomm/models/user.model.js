@@ -39,6 +39,11 @@ const userSchemaObject = {
         type: String,
         reqiured: false,
         default: ""
+    },
+    isActive: {
+        type: Boolean,
+        required: true,
+        default: true
     }
 };
 

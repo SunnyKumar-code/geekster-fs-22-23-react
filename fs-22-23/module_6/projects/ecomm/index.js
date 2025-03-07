@@ -1,11 +1,14 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const cookieParser = require('cookie-parser')
 
 const userRoutes = require("./routes/user.route");
 const productRoutes = require("./routes/product.route");
 const cartRoutes = require("./routes/cart.route");
 const couponRoutes = require("./routes/coupon.route");
+
+const authMiddleware = require("./middlewares/authMiddleware");
 
 const app = express();
 
@@ -17,12 +20,13 @@ const DB_URI = process.env.DB_URI;
 
 // Global middlewares
 app.use(express.json());
+app.use(cookieParser());
 
 // Modular routes
 app.use("/api/v1/user", userRoutes);
-app.use("/api/v1/product", productRoutes);
-app.use("/api/v1/cart", cartRoutes);
-app.use("/api/v1/coupon", couponRoutes);
+app.use("/api/v1/product", authMiddleware, productRoutes);
+app.use("/api/v1/cart", authMiddleware, cartRoutes);
+app.use("/api/v1/coupon", authMiddleware, couponRoutes);
 
 mongoose
     .connect(DB_URI)
