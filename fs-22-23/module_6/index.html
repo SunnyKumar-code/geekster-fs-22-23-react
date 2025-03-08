@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Tester</title>
+</head>
+
+<body>
+    <h1> API Tester</h1>
+    <script>
+        fetch("http://localhost:5000/api/v1/product/list", {
+            headers: {
+                "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2M1YzZkNjhiZTEzMzc3NmE3NDIyMTkiLCJpYXQiOjE3NDE0NDQ5NTQsIm5iZiI6MTc0MTQ0NDk1NCwiZXhwIjoxNzQxNDUyMTU0fQ.nr0g9ZKIKYb7My24LvEW-40UG076LV5jEFhxweiBD10"
+            }
+        })
+            .then(res => res.json())
+            .then(data => console.log(data))
+            .catch(err => console.log("ERROR OCCURED IN API CALL", err));
+    </script>
+</body>
+
+</html>

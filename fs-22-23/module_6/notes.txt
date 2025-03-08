@@ -376,3 +376,23 @@ Skip => Page 2 => 10
 Skip => Page 3 => 20
 
 (pageNo -1) * 10 => 10
+
+=========================================================================================
+CORS (Cross Origin Resource Sharing) => Web browser
+
+Orign => Source URL (Client)
+Client Source => http://127.0.0.1:5500/
+Server Source => http://127.0.0.1:5000/
+
+Cross Origin Resource Sharing
+
+
+Client Source => abc.com
+Server Source => amazon.in (Please allow the cross origin request)
+
+
+Client Source => abc.com
+Server Source => abc.com (Same Origin Resource Sharing)
+
+Client Source -> abcd.vercel.com 
+Server Source -> xyz.vercel.com

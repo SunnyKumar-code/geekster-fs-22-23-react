@@ -44,6 +44,11 @@ const userSchemaObject = {
         type: Boolean,
         required: true,
         default: true
+    },
+    role: {
+        type: String,
+        default: "CUSTOMER",
+        enum: ["CUSTOMER", "SELLER", "ADMIN", "SUPER_ADMIN"]
     }
 };
 
