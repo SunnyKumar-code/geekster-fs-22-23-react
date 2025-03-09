@@ -9,7 +9,7 @@ const authMiddleware = async (req, res, next) => {
     try {
         let token = req.headers.authorization || "";
         token = token.split(" ")[1];
-        console.log(req.cookies);
+        // console.log(req.cookies);
         // req.cookies // To get cookies from the request
         if (!token) {
             return res
@@ -28,7 +28,7 @@ const authMiddleware = async (req, res, next) => {
          */
 
         const tokenData = jwt.verify(token, process.env.JWT_SECRET_KEY);
-        console.log("isValid", tokenData);
+        // console.log("isValid", tokenData);
 
         const user = await UserModel.findById(tokenData._id);
 

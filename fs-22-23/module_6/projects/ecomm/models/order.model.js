@@ -63,7 +63,7 @@ const orderSchema = new mongoose.Schema({
         required: false,
         default: 0
     },
-    paidAmount: {
+    amountToBePaid: {
         type: Number,
         required: true
     },
@@ -78,3 +78,5 @@ const orderSchema = new mongoose.Schema({
 });
 
 const OrderModel = mongoose.model("orders", orderSchema);
+
+module.exports = OrderModel;
