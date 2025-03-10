@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://js.stripe.com/v3/"></script>
+    <title>Stripe Payment</title>
+</head>
+
+<body>
+    <div id="payment-form">
+        <div id="card-element">
+            <!-- A Stripe Element will be inserted here. -->
+        </div>
+        <button id="submit">Pay</button>
+        <div id="error-message"></div>
+    </div>
+
+    <script>
+        var stripe = Stripe('YOUR PUBLISHABLE KEY'); // Replace with your actual publishable key
+        var elements = stripe.elements();
+        var card = elements.create('card');
+        card.mount('#card-element');
+
+        document.getElementById('submit').addEventListener('click', async function (event) {
+            const { clientSecret } = await fetch('http://localhost:5000/payment', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ amount: 100_00 }), // Replace with actual amount (in paisa)
+            }).then(res => res.json());
+
+            const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
+                payment_method: {
+                    card: card,
+                },
+            });
+
+            if (error) {
+                document.getElementById('error-message').textContent = error.message;
+            } else if (paymentIntent.status === 'succeeded') {
+                alert('Payment Successful!');
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node 13-02-2025/node-server.js",
-    "dev": "nodemon 28-02-2025/index.js",
+    "dev": "nodemon 10-03-2025/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -13,9 +13,11 @@
   "description": "My first project",
   "dependencies": {
     "chalk": "^4.0.0",
+    "cors": "^2.8.5",
     "express": "^4.21.2",
     "node-wifi": "^2.0.16",
     "nodemailer": "^6.10.0",
+    "stripe": "^17.7.0",
     "welcome_div_msg": "^1.1.1"
   }
 }
