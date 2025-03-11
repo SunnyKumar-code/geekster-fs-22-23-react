@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cookieParser = require('cookie-parser');
 const cors = require("cors");
+const rateLimit = require("express-rate-limit");
 
 const userRoutes = require("./routes/user.route");
 const productRoutes = require("./routes/product.route");
@@ -19,6 +20,11 @@ dotenv.config();
 const portNo = process.env.PORT_NO;
 const DB_URI = process.env.DB_URI;
 
+const limiter = rateLimit({
+    windowMs: 1 * 60 * 1000, // 1min in millisecond
+    limit: 8
+});
+
 const corsOptions = {
     origin: process.env.ALLOWED_ORIGIN
 };
@@ -28,6 +34,7 @@ const corsOptions = {
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors(corsOptions));
+app.use(limiter);
 
 // Modular routes
 app.use("/api/v1/user", userRoutes);
