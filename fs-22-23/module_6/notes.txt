@@ -396,3 +396,57 @@ Server Source => abc.com (Same Origin Resource Sharing)
 
 Client Source -> abcd.vercel.com 
 Server Source -> xyz.vercel.com
+
+=========================================================================================
+12-03-2025
+Docker introduction
+Micro service introduction
+
+NodeJS -> 20, 18, 21 etc
+OS -> Windows, Linux, Mac etc
+Packages -> versioning
+
+Docker / Kubernetes etc => Containerization / Orchestration
+
+Docker => Image => A folder
+
+// OS => cent os
+NodeJS => 21
+Copy code 
+Project Packages etc (node_modules) installation
+Start the project - Connect with docker
+
+Windows / Mac / Linux
+Virutalization should be on in your system
+
+
+Docker CLI => GUI (Docker Desktop)
+
+
+API Calls
+
+Client -> Server
+
+Monolithic => Everything in one place
+Microservices => Split the project into different sub projects
+
+10 
+3 Server Profile & User
+4 Booking
+3 Information
+
+1 Server Profile & User
+8 Booking
+1 Information
+
+Load Balancer => API Gateway => 
+GRPC => google Remote Prcedural Call
+
+MFA
+
+
+5 Server => 5*100
+
+Load Blala
+
+Swagger
