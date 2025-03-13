@@ -49,6 +49,15 @@ const userSchemaObject = {
         type: String,
         default: "CUSTOMER",
         enum: ["CUSTOMER", "SELLER", "ADMIN", "SUPER_ADMIN"]
+    },
+    passwordOtp: {
+        type: String,
+        required: false,
+        default: ""
+    },
+    otpExpiry: {
+        type: Date,
+        required: false
     }
 };
 
